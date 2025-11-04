@@ -5,15 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='output.css') }}"
+      href="{{ url_for('static', filename='css/output.css') }}"
     />
 
-    <link rel="preconnect" href="{{ url_for(https://fonts.googleapis.com) }}" />
-    <link
-      rel="preconnect"
-      href="{{ url_for(https://fonts.gstatic.com) }}"
-      crossorigin
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- Satoshi font -->
     <link
       href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap"
@@ -30,6 +26,7 @@
       </h1>
 
       <form>
+        <!-- TODO: Add image form working with Flask -->
         <div class="flex justify-center mb-8">
           <input
             type="text"
@@ -43,4 +40,8 @@
       © 2025 Adam Cieśla
     </footer>
   </body>
+
+  <script>
+    // TODO: Add footer year auto-update
+  </script>
 </html>
