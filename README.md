@@ -1,4 +1,4 @@
-# zoo50
+# fauna50
 
 A web application for animal species classification, built as a final project for Harvard's [CS50x: Introduction to Computer Science](https://cs50.harvard.edu/x/) course.
 
@@ -9,7 +9,7 @@ Upload a photo of an animal, and the app will identify its species using a pre-t
 ## Demo
 
 - TODO: Upload a gif containing a demo
-![zoo50 demo gif](assets/demo.gif)
+![fauna50 demo gif](assets/demo.gif)
 
 ---
 
