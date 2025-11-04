@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/output.css') }}"
@@ -18,7 +19,7 @@
     <title>fauna50</title>
   </head>
   <body
-    class="bg-zinc-950 top-0 text-white min-h-screen backdrop-blur-md border-b flex flex-col border-zinc-800"
+    class="bg-zinc-950 text-white min-h-screen flex flex-col justify-between"
   >
     <main>
       <h1 class="font-satoshi text-5xl md:text-7xl text-center font-bold mb-4">
@@ -35,6 +36,12 @@
           />
         </div>
       </form>
+      <div class="text-center font-satoshi text-gray-400">
+        <p class="mb-2">
+          Upload an image of an animal to identify its species using our ML
+          model.
+        </p>
+        <p>Powered by Flask and Tailwind CSS.</p>
     </main>
     <footer class="text-center py-12 font-satoshi text-gray-500">
       © 2025 Adam Cieśla
