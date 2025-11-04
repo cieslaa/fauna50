@@ -7,15 +7,40 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='output.css') }}"
     />
+
+    <link rel="preconnect" href="{{ url_for(https://fonts.googleapis.com) }}" />
+    <link
+      rel="preconnect"
+      href="{{ url_for(https://fonts.gstatic.com) }}"
+      crossorigin
+    />
+    <!-- Satoshi font -->
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap"
+      rel="stylesheet"
+    />
     <title>fauna50</title>
   </head>
-  <body>
-    <div class="min-h-screen flex flex-col">
-      {% include 'partials/navbar.html' %}
-      <main class="grow container mx-auto px-4 py-8">
-        {% block content %}{% endblock %}
-      </main>
-      {% include 'partials/footer.html' %}
-    </div>
+  <body
+    class="bg-zinc-950 top-0 text-white min-h-screen backdrop-blur-md border-b flex flex-col border-zinc-800"
+  >
+    <main>
+      <h1 class="font-satoshi text-5xl md:text-7xl text-center font-bold mb-4">
+        fauna50
+      </h1>
+
+      <form>
+        <div class="flex justify-center mb-8">
+          <input
+            type="text"
+            placeholder="Enter a species name..."
+            class="w-3/4 md:w-1/2 p-4 rounded-lg bg-zinc-800 text-white font-satoshi focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+      </form>
+    </main>
+    <footer class="text-center py-12 font-satoshi text-gray-500">
+      © 2025 Adam Cieśla
+    </footer>
   </body>
 </html>

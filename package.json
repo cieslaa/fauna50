@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "init": "tailwindcss init",
-    "watch": "tailwindcss -i ./static/css/input.css -o ./static/css/output.css --watch"
+    "watch": "tailwindcss -i ./static/input.css -o ./static/output.css --watch"
   },
   "repository": {
     "type": "git",
@@ -19,8 +19,6 @@
   },
   "homepage": "https://github.com/cieslaa/fauna50#readme",
   "devDependencies": {
-    "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.6",
     "tailwindcss": "^4.1.16"
   },
   "dependencies": {
