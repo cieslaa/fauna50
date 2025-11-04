@@ -1,0 +1,27 @@
+{
+  "name": "fauna50",
+  "version": "1.0.0",
+  "description": "CS50x Final Project: a web app for identifying animals in photos using machine learning",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "init": "tailwindcss init",
+    "watch": "tailwindcss -i ./static/css/input.css -o ./static/css/output.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cieslaa/fauna50.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cieslaa/fauna50/issues"
+  },
+  "homepage": "https://github.com/cieslaa/fauna50#readme",
+  "devDependencies": {
+    "tailwindcss": "^4.1.16"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.16"
+  }
+}
