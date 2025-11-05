@@ -40,68 +40,73 @@
     </header>
 
     <main
-      class="w-full max-w-2xl mx-auto flex flex-col items-center justify-center py-12 space-y-10"
+      class="w-full max-w-2xl mx-auto flex flex-col items-center justify-center py-12"
     >
       <h1 class="text-5xl md:text-7xl text-white text-center select-none">
         fauna50
       </h1>
 
       <div
-        id="upload-container"
-        class="w-full p-6 bg-zinc-900 border border-zinc-900 rounded-2xl shadow-lg backdrop-blur-md transition-opacity duration-300"
+        id="content-stage"
+        class="w-full min-h-[400px] flex flex-col justify-center"
       >
-        <form
-          id="upload-form"
-          action="/predict"
-          method="POST"
-          enctype="multipart/form-data"
-          class="w-full"
+        <div
+          id="upload-container"
+          class="w-full p-6 bg-zinc-900 border border-zinc-900 rounded-2xl shadow-lg backdrop-blur-md transition-opacity duration-300"
         >
-          <label
-            for="file-upload"
-            class="flex flex-col items-center justify-center w-full group p-8 border-2 border-dashed border-zinc-700 rounded-lg cursor-pointer bg-zinc-800 hover:bg-zinc-700 transition-colors mb-6"
+          <form
+            id="upload-form"
+            action="/predict"
+            method="POST"
+            enctype="multipart/form-data"
+            class="w-full"
           >
-            <div class="flex flex-col items-center justify-center pt-5 pb-6">
-              <p
-                class="mb-2 text-xl text-gray-400 font-satoshi group-hover:text-teal-500"
-              >
-                Upload an image of an animal
-              </p>
-            </div>
-
-            <input
-              id="file-upload"
-              name="file"
-              type="file"
-              class="hidden"
-              accept="image/png, image/jpeg, image/jpg"
-              required
-            />
-          </label>
-
-          <div class="flex justify-center">
-            <button
-              type="submit"
-              class="w-full md:w-1/2 p-4 rounded-lg bg-zinc-900 hover:text-teal-500 text-gray-400 font-bold text-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all"
+            <label
+              for="file-upload"
+              class="flex flex-col items-center justify-center w-full group p-8 border-2 border-dashed border-zinc-700 rounded-lg cursor-pointer bg-zinc-800 hover:border-teal-500 transition-colors mb-6"
             >
-              Identify
-            </button>
-          </div>
-        </form>
-      </div>
+              <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                <p
+                  class="mb-2 text-xl text-gray-400 font-satoshi group-hover:text-teal-500"
+                >
+                  Upload an image of an animal
+                </p>
+              </div>
 
-      <div
-        id="loader"
-        class="hidden flex-col items-center mt-16 text-gray-400 transition-opacity duration-300"
-      >
-        <div class="loader mb-6"></div>
-        <p class="text-lg font-satoshi">Analyzing image...</p>
-      </div>
+              <input
+                id="file-upload"
+                name="file"
+                type="file"
+                class="hidden"
+                accept="image/png, image/jpeg, image/jpg"
+                required
+              />
+            </label>
 
-      <div
-        id="result"
-        class="hidden opacity-0 translate-y-4 text-teal-400 text-lg font-bold transition-all duration-700"
-      ></div>
+            <div class="flex justify-center">
+              <button
+                type="submit"
+                class="w-full md:w-1/2 p-4 rounded-lg bg-zinc-900 hover:text-teal-500 text-gray-400 font-bold text-xl transition-all"
+              >
+                Identify
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div
+          id="loader"
+          class="hidden flex-col items-center text-gray-400 transition-opacity duration-300"
+        >
+          <div class="loader mb-6"></div>
+          <p class="text-lg font-satoshi">Analyzing image...</p>
+        </div>
+
+        <div
+          id="result"
+          class="hidden opacity-0 translate-y-4 text-teal-400 text-lg font-bold transition-all duration-700 text-center"
+        ></div>
+      </div>
     </main>
 
     <footer class="text-center py-12 text-gray-500">
@@ -109,7 +114,7 @@
     </footer>
 
     <style>
-      /* Loader animation... (bez zmian) */
+      /* Loader animation */
       .loader {
         width: 65px;
         aspect-ratio: 1;
