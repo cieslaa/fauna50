@@ -9,44 +9,141 @@
       href="{{ url_for('static', filename='css/output.css') }}"
     />
 
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="{{ url_for('static', filename='favicon.svg') }}"
+    />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Satoshi font -->
     <link
       href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap"
       rel="stylesheet"
     />
 
-    <title>fauna50</title>
+    <title>fauna50 - Adam Cieśla</title>
   </head>
-  <body class="bg-zinc-950 flex flex-col justify-between">
-    <main>
-      <h1 class="font-satoshi text-7xl text-white text-center mb-4">fauna50</h1>
 
-      <form>
-        <!-- TODO: Add image form working with Flask -->
-        <div class="flex justify-center mb-8">
-          <input
-            type="text"
-            placeholder="Enter a species name..."
-            class="w-3/4 md:w-1/2 p-4 rounded-lg bg-zinc-800 text-white font-satoshi focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-      </form>
-      <div class="text-center font-satoshi text-gray-400">
-        <p class="mb-2">
-          Upload an image of an animal to identify its species using our ML
-          model.
-        </p>
-        <p>Powered by Flask and Tailwind CSS.</p>
+  <body
+    class="bg-zinc-950 text-white font-satoshi grid grid-rows-[auto_1fr_auto] min-h-screen top-0 p-4 md:p-8"
+  >
+    <header class="w-full max-w-2xl mx-auto mb-8">
+      <a
+        href="https://adamciesla.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-lg text-gray-500 hover:text-teal-500 transition-colors"
+      >
+        ← Back to homepage
+      </a>
+    </header>
+
+    <main
+      class="w-full max-w-2xl mx-auto flex flex-col items-center justify-center py-12 space-y-10"
+    >
+      <h1 class="text-5xl md:text-7xl text-white text-center select-none">
+        fauna50
+      </h1>
+
+      <div
+        id="upload-container"
+        class="w-full p-6 bg-zinc-900 border border-zinc-900 rounded-2xl shadow-lg backdrop-blur-md transition-opacity duration-300"
+      >
+        <form
+          id="upload-form"
+          action="/predict"
+          method="POST"
+          enctype="multipart/form-data"
+          class="w-full"
+        >
+          <label
+            for="file-upload"
+            class="flex flex-col items-center justify-center w-full group p-8 border-2 border-dashed border-zinc-700 rounded-lg cursor-pointer bg-zinc-800 hover:bg-zinc-700 transition-colors mb-6"
+          >
+            <div class="flex flex-col items-center justify-center pt-5 pb-6">
+              <p
+                class="mb-2 text-xl text-gray-400 font-satoshi group-hover:text-teal-500"
+              >
+                Upload an image of an animal
+              </p>
+            </div>
+
+            <input
+              id="file-upload"
+              name="file"
+              type="file"
+              class="hidden"
+              accept="image/png, image/jpeg, image/jpg"
+              required
+            />
+          </label>
+
+          <div class="flex justify-center">
+            <button
+              type="submit"
+              class="w-full md:w-1/2 p-4 rounded-lg bg-zinc-900 hover:text-teal-500 text-gray-400 font-bold text-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all"
+            >
+              Identify
+            </button>
+          </div>
+        </form>
       </div>
-    </main>
-    <footer class="text-center py-8 font-satoshi text-gray-500">
-      © 2025 Adam Cieśla
-    </footer>
-  </body>
 
-  <script>
-    // TODO: Add footer year auto-update
-  </script>
+      <div
+        id="loader"
+        class="hidden flex-col items-center mt-16 text-gray-400 transition-opacity duration-300"
+      >
+        <div class="loader mb-6"></div>
+        <p class="text-lg font-satoshi">Analyzing image...</p>
+      </div>
+
+      <div
+        id="result"
+        class="hidden opacity-0 translate-y-4 text-teal-400 text-lg font-bold transition-all duration-700"
+      ></div>
+    </main>
+
+    <footer class="text-center py-12 text-gray-500">
+      © <span id="year"></span> Adam Cieśla
+    </footer>
+
+    <style>
+      /* Loader animation... (bez zmian) */
+      .loader {
+        width: 65px;
+        aspect-ratio: 1;
+        --g: radial-gradient(
+            farthest-side,
+            transparent calc(95% - 3px),
+            #2dd4bf calc(100% - 3px) 98%,
+            transparent 101%
+          )
+          no-repeat;
+        background: var(--g), var(--g), var(--g);
+        background-size: 30px 30px;
+        animation: l10 1.5s infinite;
+      }
+
+      @keyframes l10 {
+        0% {
+          background-position: 0 0, 0 100%, 100% 100%;
+        }
+        25% {
+          background-position: 100% 0, 0 100%, 100% 100%;
+        }
+        50% {
+          background-position: 100% 0, 0 0, 100% 100%;
+        }
+        75% {
+          background-position: 100% 0, 0 0, 0 100%;
+        }
+        100% {
+          background-position: 100% 100%, 0 0, 0 100%;
+        }
+      }
+    </style>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+  </body>
 </html>

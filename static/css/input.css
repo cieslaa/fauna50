@@ -1,9 +1,4 @@
 @import "tailwindcss";
-@theme {
-  fontfamily: {
-    satoshi: [ '"Satoshi"', "sans-serif"];
-  }
-}
 
 @import url("https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap");
 
