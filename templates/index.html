@@ -22,7 +22,7 @@
       rel="stylesheet"
     />
 
-    <title>fauna50 - Adam Cieśla</title>
+    <title>fauna50 – Adam Cieśla</title>
   </head>
 
   <body
@@ -31,8 +31,6 @@
     <header class="w-full max-w-2xl mx-auto mb-8">
       <a
         href="https://adamciesla.com"
-        target="_blank"
-        rel="noopener noreferrer"
         class="text-lg text-gray-500 hover:text-teal-500 transition-colors"
       >
         ← Back to homepage
@@ -42,7 +40,9 @@
     <main
       class="w-full max-w-2xl mx-auto flex flex-col items-center justify-center py-12"
     >
-      <h1 class="text-5xl md:text-7xl text-white text-center select-none">
+      <h1
+        class="text-5xl md:text-7xl text-white text-bold text-center select-none"
+      >
         fauna50
       </h1>
 
@@ -67,6 +67,7 @@
             >
               <div class="flex flex-col items-center justify-center pt-5 pb-6">
                 <p
+                  id="upload-image"
                   class="mb-2 text-xl text-gray-400 font-satoshi group-hover:text-teal-500"
                 >
                   Upload an image of an animal
@@ -98,7 +99,7 @@
           id="loader"
           class="hidden flex-col items-center text-gray-400 transition-opacity duration-300"
         >
-          <div class="loader mb-6"></div>
+          <div class="loader mb-14"></div>
           <p class="text-lg font-satoshi">Analyzing image...</p>
         </div>
 
@@ -114,37 +115,93 @@
     </footer>
 
     <style>
-      /* Loader animation */
       .loader {
-        width: 65px;
-        aspect-ratio: 1;
-        --g: radial-gradient(
-            farthest-side,
-            transparent calc(95% - 3px),
-            #2dd4bf calc(100% - 3px) 98%,
-            transparent 101%
-          )
-          no-repeat;
-        background: var(--g), var(--g), var(--g);
-        background-size: 30px 30px;
-        animation: l10 1.5s infinite;
+        font-size: 10px;
+        width: 1em;
+        height: 1em;
+        border-radius: 50%;
+        position: relative;
+        text-indent: -9999em;
+        animation: mulShdSpin 0.9s infinite ease;
+        transform: translateZ(0);
       }
-
-      @keyframes l10 {
-        0% {
-          background-position: 0 0, 0 100%, 100% 100%;
+      @keyframes mulShdSpin {
+        0%,
+        100% {
+          box-shadow: 0em -2.6em 0em 0em #ffffff,
+            1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
+            2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
+            1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
+            0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
+            -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
+            -2.6em 0em 0 0em rgba(255, 255, 255, 0.5),
+            -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.7);
+        }
+        12.5% {
+          box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.7),
+            1.8em -1.8em 0 0em #ffffff, 2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
+            1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
+            0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
+            -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
+            -2.6em 0em 0 0em rgba(255, 255, 255, 0.2),
+            -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.5);
         }
         25% {
-          background-position: 100% 0, 0 100%, 100% 100%;
+          box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.5),
+            1.8em -1.8em 0 0em rgba(255, 255, 255, 0.7), 2.5em 0em 0 0em #ffffff,
+            1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
+            0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
+            -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
+            -2.6em 0em 0 0em rgba(255, 255, 255, 0.2),
+            -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
+        }
+        37.5% {
+          box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
+            1.8em -1.8em 0 0em rgba(255, 255, 255, 0.5),
+            2.5em 0em 0 0em rgba(255, 255, 255, 0.7),
+            1.75em 1.75em 0 0em #ffffff,
+            0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
+            -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
+            -2.6em 0em 0 0em rgba(255, 255, 255, 0.2),
+            -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
         }
         50% {
-          background-position: 100% 0, 0 0, 100% 100%;
+          box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
+            1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
+            2.5em 0em 0 0em rgba(255, 255, 255, 0.5),
+            1.75em 1.75em 0 0em rgba(255, 255, 255, 0.7),
+            0em 2.5em 0 0em #ffffff, -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
+            -2.6em 0em 0 0em rgba(255, 255, 255, 0.2),
+            -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
+        }
+        62.5% {
+          box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
+            1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
+            2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
+            1.75em 1.75em 0 0em rgba(255, 255, 255, 0.5),
+            0em 2.5em 0 0em rgba(255, 255, 255, 0.7), -1.8em 1.8em 0 0em #ffffff,
+            -2.6em 0em 0 0em rgba(255, 255, 255, 0.2),
+            -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
         }
         75% {
-          background-position: 100% 0, 0 0, 0 100%;
+          box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
+            1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
+            2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
+            1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
+            0em 2.5em 0 0em rgba(255, 255, 255, 0.5),
+            -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.7),
+            -2.6em 0em 0 0em #ffffff,
+            -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
         }
-        100% {
-          background-position: 100% 100%, 0 0, 0 100%;
+        87.5% {
+          box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
+            1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
+            2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
+            1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
+            0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
+            -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.5),
+            -2.6em 0em 0 0em rgba(255, 255, 255, 0.7),
+            -1.8em -1.8em 0 0em #ffffff;
         }
       }
     </style>
