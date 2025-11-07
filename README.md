@@ -34,7 +34,7 @@ TODO
 
 ## Getting Started
 
-Follow instructions below if you want to get a copy of this project running on your computer. Otherwise, visit (**[fauna50.adamciesla.com](https://fauna50.adamciesla.com)**).
+Follow instructions below if you want to get a copy of this project running on your computer.
 
 ### 1. Prerequisites
 
