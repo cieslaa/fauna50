@@ -1,5 +1,6 @@
 from flask import Flask, url_for, render_template, jsonify, request
-import time
+from PIL import Image
+from model.model import classify_image
 
 app = Flask(__name__)
 
@@ -18,13 +19,18 @@ def predict():
         return jsonify({'error': 'No selected file'}), 400
 
     if file:
-        # Add Python ML prediction logic here
-        
-        # Symulujemy opóźnienie analizy ML
-        time.sleep(2) 
-        
-        # ZReturn false prediction for testing 
-        return jsonify({'prediction': 'Golden Retriever (Test)'})
+        try:
+            img = Image.open(file.stream)
+            
+            # Use the classify_image function from model/model.py
+            predictions = classify_image(img) 
+            
+            # Return the predictions as JSON
+            return jsonify(predictions)
+
+        except Exception as e:
+            print(f"Error: {e}") 
+            return jsonify({'error': 'Something went wrong during analysis'}), 500
 
     return jsonify({'error': 'Something went wrong'}), 500
 

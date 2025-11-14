@@ -32,13 +32,42 @@ form.addEventListener("submit", async (e) => {
     loader.classList.add("flex");
   }, 300);
 
-  let analysisResult = "I think this is a Golden Retriever!"; // Dummy result
+  let analysisResult = "";
   let errorOccurred = false;
 
-  // Fake 2-second delay to simulate analysis
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+  try {
+    const formData = new FormData(form);
+    const response = await fetch("/predict", {
+      method: "POST",
+      body: formData,
+    });
 
-  // TODO: Replace with actual API call
+    if (response.ok) {
+      const predictions = await response.json();
+
+      // Handle predictions
+      if (Array.isArray(predictions) && predictions.length > 0) {
+        // Use prediciton from model.py
+        const topPrediction = predictions[0];
+        analysisResult = `I think this is a ${
+          topPrediction.name
+        }! (${topPrediction.score.toFixed(1)}%)`;
+        errorOccurred = false;
+      } else {
+        analysisResult = "Could not identify the animal.";
+        errorOccurred = true;
+      }
+    } else {
+      const errData = await response.json();
+      analysisResult = `Error: ${errData.error || response.statusText}`;
+      errorOccurred = true;
+    }
+  } catch (error) {
+    // Catch network or other errors
+    console.error("Fetch error:", error);
+    analysisResult = "Error: Could not connect to server.";
+    errorOccurred = true;
+  }
 
   if (errorOccurred) {
     retryButton.classList.remove("hidden");
