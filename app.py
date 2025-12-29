@@ -5,6 +5,24 @@ from duckduckgo_search import DDGS
 
 app = Flask(__name__)
 
+def get_animal_images(animal_name):
+    """
+    Takes 3 animal images from DuckDuckGo
+    """
+    results = []
+    try:
+        with DDGS() as ddgs:
+            # For example, "Golden retriever animal photo"
+            search_results = list(ddgs.images(f"{animal_name} animal photo", max_results=3))
+            
+            for item in search_results:
+                results.append(item['image'])
+                
+    except Exception as e:
+        print(f"Error while loading images: {e}")
+        
+    return results
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -22,18 +40,33 @@ def predict():
     if file:
         try:
             img = Image.open(file.stream)
+
+            prediction = classify_image(img) 
             
-            # Use the classify_image function from model/model.py
-            predictions = classify_image(img) 
+            if not prediction['is_animal']:
+                return jsonify({
+                    'success': True,  
+                    'is_animal': False,
+                    'name': prediction['name'],
+                    'message': f"Found: {prediction['name']}. Could not identify as an animal. Try another image.",
+                })
             
-            # Return the predictions as JSON
-            return jsonify(predictions)
+            print(f"Found animal: {prediction['name']}. Score: {prediction['score']}%, loading images...")
+            gallery = get_animal_images(prediction['name'])
+
+            return jsonify({
+                'success': True,
+                'is_animal': True,
+                'name': prediction['name'],
+                'score': prediction['score'],
+                'images': gallery  
+            })
 
         except Exception as e:
             print(f"Error: {e}") 
-            return jsonify({'error': 'Something went wrong during analysis'}), 500
+            return jsonify({'error': 'Błąd podczas analizy obrazu'}), 500
 
-    return jsonify({'error': 'Something went wrong'}), 500
+    return jsonify({'error': 'Unknown error'}), 500
 
 if(__name__ == "__main__"):
     app.run(debug=True)
