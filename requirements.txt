@@ -3,3 +3,4 @@ Pillow
 transformers
 torch
 gunicorn
+duckduckgo-search

@@ -1,6 +1,7 @@
 from flask import Flask, url_for, render_template, jsonify, request
 from PIL import Image
 from model.model import classify_image
+from duckduckgo_search import DDGS
 
 app = Flask(__name__)
 
