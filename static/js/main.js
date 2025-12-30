@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const result = document.getElementById("result");
   const loader = document.getElementById("loader");
   const retryButton = document.getElementById("retry-button");
+  const uploadText = document.getElementById("upload-image");
 
   // Create gallery container if it doesn't exist
   let galleryContainer = document.getElementById("gallery-container");
@@ -24,6 +25,14 @@ document.addEventListener("DOMContentLoaded", () => {
       form.classList.remove("hidden"); // Show form again
     });
   }
+
+  fileInput.addEventListener("change", () => {
+    if (fileInput.files.length > 0) {
+      uploadText.textContent = fileInput.files[0].name;
+      uploadText.classList.remove("text-gray-400");
+      uploadText.classList.add("text-teal-500", "font-bold");
+    }
+  });
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -54,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (response.ok) {
         if (data.is_animal) {
           // If it is an animal
-          result.textContent = `Animal recognized: ${data.name} (Score: ${data.score}%)`;
+          result.textContent = `Animal recognized: ${data.name} (Score: ${data.score}%).`;
           result.className =
             "text-teal-300 text-2xl transition-all duration-700 text-center mb-4";
 
@@ -64,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
               const imgElement = document.createElement("img");
               imgElement.src = imgUrl;
               imgElement.className =
-                "w-32 h-32 object-cover rounded-md shadow-md hover:scale-105 transition-transform duration-300";
+                "w-64 h-64 object-cover rounded-md shadow-md hover:scale-102 transition-transform duration-300";
               galleryContainer.appendChild(imgElement);
             });
             const galleryTitle = document.createElement("p");
@@ -77,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
           // If it is NOT an animal
           result.textContent = data.message;
           result.className =
-            "text-yellow-400 text-xl font-bold transition-all duration-700 text-center";
+            "text-teal-300 text-xl transition-all duration-700 text-center";
         }
       } else {
         throw new Error(data.error || "Server error");

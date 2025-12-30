@@ -17,7 +17,10 @@ Upload a photo of an animal, and the app will identify its species using a pre-t
 
 ## Features
 
-TODO
+- **Vision Recognition**: Utilizes the **Vision Transformer (ViT)** architecture (`google/vit-base-patch16-224`) to classify animal species.
+- **Data Validation**: Implements a logic layer to distinguish between animals and inanimate objects. If a user uploads a photo of an apple or a car, the system detects it's not an animal and rejects the input (Data Quality control).
+- **Data Enrichment**: Automatically fetches similar images from the web using DuckDuckGo Search API (`ddgs`) to provide visual context for the classification result.
+- **Modern UI**: Features a fully responsive, dark-mode interface built with **Tailwind CSS**.
 
 ---
 
@@ -28,17 +31,36 @@ TODO
 - **ML**: Hugging Face [`transformers`](https://huggingface.co/docs/transformers/installation) library (with PyTorch)
 - **Model**: [`google/vit-base-patch16-224`](https://huggingface.co/google/vit-base-patch16-224) (Vision Transformer)
 - **Image Processing**: [`Pillow (PIL)`](https://pillow.readthedocs.io/en/stable/)
+- **Utilities**: `duckduckgo-search` (Web Scraping/API)
 - **Deployment**: [`Render.com`](https://render.com/)
 
 ---
 
+## Project Structure
+
+```text
+fauna50/
+├── app.py              # Main Flask application
+├── model/
+│   └── model.py        # ML logic: loads ViT model and runs inference
+├── static/
+│   ├── css/            # Compiled Tailwind CSS files
+│   └── js/
+│       └── main.js     # Frontend logic
+├── templates/
+│   └── index.html      # Main HTML template
+├── package.json        # Node.js dependencies (Tailwind CSS)
+└── requirements.txt    # Python dependencies
+```
+
 ## Getting Started
 
-Follow instructions below if you want to get a copy of this project running on your computer.
+Follow the instructions below if you want to get a copy of this project running on your local machine.
 
 ### 1. Prerequisites
 
 - `Python 3.8+`
+- `Node.js`
 - `Git`
 - `venv` module
 
