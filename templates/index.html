@@ -50,12 +50,10 @@
 
       <div
         id="content-stage"
-        class="w-full min-h-[400px] flex flex-col justify-center"
+        class="w-full max-w-xl bg-zinc-900 border border-zinc-800 rounded-3xl shadow-xl p-8 transition-all duration-500"
       >
-        <div
-          id="upload-container"
-          class="w-full p-6 bg-zinc-900 border border-zinc-900 rounded-2xl shadow-lg backdrop-blur-md transition-opacity duration-300"
-        >
+        <!-- UPLOAD -->
+        <div id="stage-upload">
           <form
             id="upload-form"
             action="/predict"
@@ -65,16 +63,14 @@
           >
             <label
               for="file-upload"
-              class="flex flex-col items-center justify-center w-full group p-8 border-2 border-dashed border-zinc-700 rounded-lg cursor-pointer bg-zinc-800 hover:border-teal-500 hover:bg-zinc-700 transition-colors mb-6"
+              class="flex flex-col items-center justify-center w-full group p-10 border-2 border-dashed border-zinc-700 rounded-2xl cursor-pointer bg-zinc-800 hover:border-teal-500 hover:bg-zinc-700 transition-colors mb-6"
             >
-              <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                <p
-                  id="upload-image"
-                  class="mb-2 text-xl text-gray-400 font-satoshi group-hover:text-teal-500"
-                >
-                  Upload an image of an animal
-                </p>
-              </div>
+              <p
+                id="upload-image"
+                class="text-xl text-gray-400 font-satoshi group-hover:text-teal-400 transition-colors"
+              >
+                Upload an image of an animal
+              </p>
 
               <input
                 id="file-upload"
@@ -86,36 +82,46 @@
               />
             </label>
 
-            <div class="flex justify-center">
-              <button
-                type="submit"
-                class="w-full md:w-1/2 p-4 rounded-lg bg-zinc-900 hover:text-teal-500 text-gray-400 font-bold text-xl transition-all"
-              >
-                Identify
-              </button>
-            </div>
+            <button
+              type="submit"
+              class="w-full py-4 rounded-xl bg-zinc-950 border border-zinc-800 text-gray-300 font-semibold text-lg hover:text-teal-400 hover:border-teal-500 transition-all"
+            >
+              Identify
+            </button>
           </form>
         </div>
 
+        <!-- LOADING -->
         <div
-          id="loader"
-          class="hidden flex-col items-center text-gray-400 transition-opacity duration-300"
+          id="stage-loading"
+          class="hidden flex flex-col items-center justify-center py-20 text-gray-400"
         >
-          <div class="loader mb-14"></div>
-          <p class="text-lg font-satoshi">Analyzing image...</p>
+          <div class="loader mb-8"></div>
+          <p class="text-lg">Analyzing image…</p>
         </div>
 
+        <!-- RESULT -->
         <div
-          id="result"
-          class="hidden opacity-0 translate-y-4 text-teal-400 text-lg font-bold transition-all duration-700 text-center"
-        ></div>
-
-        <button
-          id="retry-button"
-          class="hidden mx-auto mt-6 px-6 py-2 rounded-lg bg-red-500/10 text-red-500 border border-red-500 hover:bg-red-500 hover:text-white transition-colors font-bold"
+          id="stage-result"
+          class="hidden text-center transition-all duration-700"
         >
-          Try again
-        </button>
+          <p
+            id="result-text"
+            class="text-2xl font-semibold text-teal-400 mb-8"
+          ></p>
+
+          <div
+            id="gallery-container"
+            class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-10"
+          ></div>
+
+          <button
+            id="retry-button"
+            class="mx-auto px-6 py-3 rounded-xl border border-zinc-700 text-gray-400 hover:border-teal-500 hover:text-teal-400 transition-all font-semibold"
+          >
+            Try again
+          </button>
+        </div>
       </div>
     </main>
 

@@ -13,7 +13,7 @@ def get_animal_images(animal_name):
     try:
         with DDGS() as ddgs:
             # For example, "Golden retriever animal photo"
-            search_results = list(ddgs.images(f"{animal_name} animal photo", max_results=3))
+            search_results = list(ddgs.images(f"{animal_name} animal photo", max_results=4))
             
             for item in search_results:
                 results.append(item['image'])
