@@ -4,14 +4,14 @@ A web application for animal species classification, built as a final project fo
 
 Upload a photo of an animal, and the app will identify its species using a pre-trained Vision Transformer (ViT) model from Hugging Face.
 
-**Live:** [https://fauna50.adamciesla.com](https://fauna50.adamciesla.com)
+**Live:** [https://fauna50.adamciesla.com](https://fauna50.adamciesla.com) (might take a while to load the image)
 
 ---
 
-## Demo
+## Screenshots
 
-- TODO: Upload a gif containing a demo
-  ![fauna50 demo gif](assets/demo.gif)
+![Main Interface](assets/screenshot_1.png)
+![Animal Recognized](assets/screenshot_2.png)
 
 ---
 
