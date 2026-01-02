@@ -69,7 +69,7 @@ Follow the instructions below if you want to get a copy of this project running 
 1.  **Clone the repository**
 
     ```bash
-    git clone [https://github.com/cieslaa/fauna50.git](https://github.com/cieslaa/fauna50.git)
+    git clone https://github.com/cieslaa/fauna50.git
     cd fauna50
     ```
 
@@ -98,7 +98,7 @@ Follow the instructions below if you want to get a copy of this project running 
 
 ### 3. Running the app
 
-You need to run two processes simultaneously in seperate terminal windows:
+You need to run two processes simultaneously in separate terminal windows:
 
 ```bash
 npm run watch
