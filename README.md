@@ -18,7 +18,7 @@ Upload a photo of an animal, and the app will identify its species using a pre-t
 ## Features
 
 - **Vision Recognition**: Utilizes the **Vision Transformer (ViT)** architecture (`google/vit-base-patch16-224`) to classify animal species.
-- **Data Validation**: Implements a logic layer to distinguish between animals and inanimate objects. If a user uploads a photo of an apple or a car, the system detects it's not an animal and rejects the input (Data Quality control).
+- **Data Validation**: Implements a logic layer to distinguish between animals and inanimate objects. If a user uploads a photo of an apple or a car, the system detects it's not an animal and rejects the input.
 - **Data Enrichment**: Automatically fetches similar images from the web using DuckDuckGo Search API (`ddgs`) to provide visual context for the classification result.
 - **Modern UI**: Features a fully responsive, dark-mode interface built with **Tailwind CSS**.
 
@@ -31,7 +31,7 @@ Upload a photo of an animal, and the app will identify its species using a pre-t
 - **ML**: Hugging Face [`transformers`](https://huggingface.co/docs/transformers/installation) library (with PyTorch)
 - **Model**: [`google/vit-base-patch16-224`](https://huggingface.co/google/vit-base-patch16-224) (Vision Transformer)
 - **Image Processing**: [`Pillow (PIL)`](https://pillow.readthedocs.io/en/stable/)
-- **Utilities**: `duckduckgo-search` (Web Scraping/API)
+- **Utilities**: `ddgs` (Web Scraping/API)
 - **Deployment**: [`Render.com`](https://render.com/)
 
 ---
@@ -109,6 +109,12 @@ flask run
 ```
 
 ---
+
+## Certificate
+
+You can view my certificate of completion [here](https://cs50.harvard.edu/certificates/04cf9fdd-bdab-4499-adc3-42738cd165ba).
+
+![CS50x certificate](assets/CS50x.png)
 
 ## License
 
